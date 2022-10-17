@@ -2,29 +2,8 @@ import { useState } from "react";
 import React from "react";
 import { addTodo } from "./redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { toggleCheckMark } from "./redux/actions/actions";
 function App() {
-  // const data = [
-  //   {
-  //     id: 1,
-  //     title: "todo1",
-  //     complete: true,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "todo2",
-  //     complete: false,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "todo3",
-  //     complete: true,
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "todo4",
-  //     complete: true,
-  //   },
-  // ];
   const [title, setTitle] = useState("");
   const [todoi, settodo] = useState();
 
@@ -51,12 +30,13 @@ function App() {
   }
   function handleComplete(e, idx) {
     var updateTodo = [...todosFromred];
-    todosFromred.forEach((element, ind) => {
+    updateTodo.forEach((element, ind) => {
       if (idx === ind) {
         updateTodo[ind].complete = !updateTodo[ind].complete;
       }
     });
     settodo(updateTodo);
+    dispatch(toggleCheckMark(todoi));
   }
   return (
     <div className="App">

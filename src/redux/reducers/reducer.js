@@ -7,6 +7,9 @@ export const TodoReducer = (state = [], { type, payload }) => {
       console.log("payload", payload);
       return [...state, payload];
 
+    case "toggle-check":
+      return [...payload];
+
     default:
       return state;
   }
